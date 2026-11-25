@@ -1,0 +1,14 @@
+# Результати складання
+target/
+**/target/
+*.war
+
+# IDE
+.idea/
+*.iml
+out/
+
+# Журнали та локальні налаштування (паролі, токени)
+*.log
+.env
+application-local.properties
