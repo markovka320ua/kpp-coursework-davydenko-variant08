@@ -97,8 +97,8 @@ INSERT INTO observation_point (code, name, water_body, water_use, sensitivity) V
 INSERT INTO sample (point_id, sampled_at, collector, state, integral_index) VALUES
  (1, '2026-10-05 09:30:00', 'Коваленко І. П.', 'REGISTERED', NULL),
  (2, '2026-10-06 11:00:00', 'Мельник О. С.',   'VALIDATED',  NULL),
- (3, '2026-10-07 08:45:00', 'Шевчук Т. В.',    'ANALYZED',   NULL),
- (1, '2026-09-20 10:15:00', 'Коваленко І. П.', 'ARCHIVED',   NULL),
+ (3, '2026-10-07 08:45:00', 'Шевчук Т. В.',    'ANALYZED',   72.50),
+ (1, '2026-09-20 10:15:00', 'Коваленко І. П.', 'ARCHIVED',   23.75),
  (4, '2026-10-08 14:20:00', 'Мельник О. С.',   'REGISTERED', NULL);
 
 INSERT INTO measurement (sample_id, parameter, value, unit, norm_limit) VALUES
