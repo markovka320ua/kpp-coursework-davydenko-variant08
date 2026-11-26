@@ -16,6 +16,10 @@ public class MeasurementService {
     private final MeasurementDao measurementDao = new MeasurementDao();
     private final SampleDao sampleDao = new SampleDao();
 
+    public List<Measurement> list() {
+        return measurementDao.findAll();
+    }
+
     public List<Measurement> listBySample(int sampleId) {
         return measurementDao.findBySample(sampleId);
     }

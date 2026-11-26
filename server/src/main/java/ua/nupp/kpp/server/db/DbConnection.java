@@ -14,6 +14,15 @@ import java.util.Properties;
 public final class DbConnection {
     private static final Properties PROPS = load();
 
+    static {
+        try {
+            // Явна реєстрація драйвера: у Tomcat JDBC-драйвер лежить у WEB-INF/lib
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new IllegalStateException("MySQL JDBC-драйвер не знайдено в classpath", e);
+        }
+    }
+
     private DbConnection() {
     }
 

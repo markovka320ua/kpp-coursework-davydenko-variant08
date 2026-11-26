@@ -84,6 +84,11 @@ public class SampleService {
 
     /** Обчислює інтегральний показник за поточними вимірюваннями (без збереження). */
     public BigDecimal calculateIndex(int sampleId) {
+        return breakdown(sampleId).integral();
+    }
+
+    /** Повертає фактори F1–F3 і підсумковий показник проби (без збереження). */
+    public IndexResult breakdown(int sampleId) {
         Sample s = get(sampleId);
         ObservationPoint point = pointDao.findById(s.getPointId())
                 .orElseThrow(() -> new ValidationException("Пункт спостереження проби не знайдено"));
@@ -91,7 +96,11 @@ public class SampleService {
         if (measurements.isEmpty()) {
             throw new ValidationException("Для обчислення показника потрібне хоча б одне вимірювання");
         }
-        return IndexCalculator.integral(measurements, point.getSensitivity());
+        return new IndexResult(sampleId,
+                IndexCalculator.f1(measurements),
+                IndexCalculator.f2(measurements),
+                IndexCalculator.f3(point.getSensitivity()),
+                IndexCalculator.integral(measurements, point.getSensitivity()));
     }
 
     private Sample validate(Sample in) {
