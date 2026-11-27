@@ -3,6 +3,9 @@ target/
 **/target/
 *.war
 
+# Архіви
+*.zip
+
 # IDE
 .idea/
 *.iml
